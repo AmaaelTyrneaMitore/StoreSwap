@@ -16,3 +16,11 @@ Besides all that, it utilizes all the latest features like data streaming, utili
 ### What's the idea behind it? 🥸
 
 I created this application as a lunch time project in order to test and sharpen my newly learned skills. And that's why it has all the cool features that you might find in a typical modern ECommerce application, but not all of them. Also, as I mentioned, I am still learning and therefore, If you think that there's anything that you would like to add or that can be refined, please feel free to create a PR because that would be really helpful.
+
+### Running On Your Local Machine 🚀
+- First clone this repo by running the `git clone git@github.com:AmaaelTyrneaMitore/StoreSwap.git` command.
+- Now make sure to install all the project dependencies by running the `npm i` command.
+- Now, if you're contributing , it's recommended to install dev dependencies as well by running the `npm i -D` command to make sure you have a smooth development experience and also it will install the types for all the 3rd-party libraries used in this project.
+- Make sure Node.js is installed (>= V16) and if you didn't install the dev dependencies then make sure Typescript and Nodemon are installed, either globally or locally.
+- Now you can run `npm start` to run development server on `localhost:3000`. 
+- The `npm run build` command will start the production server on the same port.
