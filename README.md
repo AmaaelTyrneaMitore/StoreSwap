@@ -11,8 +11,8 @@ It is a full-fledged **ECommerce application** powered by **Express**, **NodeJS*
 - And there they can also download the order receipt in PDF format that will be generated on the fly.
 
 ### Wait!! There's more! 🥳
-Besides all that, it utilizes all the latest features like data streaming, utilization of meaninful status codes, pagination, input and file validation, async/await syntax and best practices for writing code that if flexible and re-usable and which is easily testable and maintanable.
+Besides all that, it utilizes all the latest features like data streaming, utilization of meaninful status codes, pagination, input and file validation, async/await syntax and best practices for writing code that is flexible and re-usable and which is easily testable and maintanable.
 
 ### What's the idea behind it? 🥸
 
-I created this application as a lunch time project in order to test and sharpen my newly learned skills. And that's why it has all the cool features that you might find in a typical modern ECommerce application, but not all of them. Also, as I mentioned, I am still learning and therefore, If you think that if there's anything that you would like to add or that can be refined, please feel free to create a PR because that would be really helpful.
+I created this application as a lunch time project in order to test and sharpen my newly learned skills. And that's why it has all the cool features that you might find in a typical modern ECommerce application, but not all of them. Also, as I mentioned, I am still learning and therefore, If you think that there's anything that you would like to add or that can be refined, please feel free to create a PR because that would be really helpful.

@@ -1,0 +1,41 @@
+{
+  "name": "storeswap",
+  "version": "1.0.0",
+  "description": "It is a full-fledged ECommerce application powered by Express, NodeJS, EJS and TypeScript that implements MVC pattern and the API adheres to the REST architecture.",
+  "main": "dist/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AmaaelTyrneaMitore/StoreSwap.git"
+  },
+  "keywords": [
+    "express",
+    "nodejs",
+    "ejs",
+    "typescript",
+    "rest",
+    "ecommerce",
+    "beginner",
+    "project",
+    "stripe",
+    "pdfkit",
+    "sendgrid",
+    "cookies",
+    "session",
+    "node",
+    "mongo",
+    "mongodb",
+    "mongoose",
+    "javascript",
+    "html",
+    "css"
+  ],
+  "author": "Shashank Singh",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/AmaaelTyrneaMitore/StoreSwap/issues"
+  },
+  "homepage": "https://github.com/AmaaelTyrneaMitore/StoreSwap#readme"
+}
