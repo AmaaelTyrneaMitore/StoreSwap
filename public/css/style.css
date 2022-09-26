@@ -1,0 +1,367 @@
+/*******************************/
+/*           HEADER            */
+/*******************************/
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+
+  /* fixed height for sticky nav */
+  height: 9.6rem;
+  padding: 0 4.8rem;
+}
+
+.logo:link,
+.logo:visited {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  justify-self: flex-start;
+  margin-bottom: 1.2rem;
+}
+
+.logo-img {
+  height: 4.8rem;
+}
+
+.logo-text {
+  color: #fff;
+  font-family: 'Mali', cursive;
+  font-weight: 700;
+  font-size: 2.4rem;
+  padding-top: 0.8rem;
+  text-shadow: 0 0.2rem 0.2rem rgba(0, 0, 0, 25%);
+}
+
+/*******************************/
+/*         NAVIGATION          */
+/*******************************/
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6.4rem;
+}
+
+.main-nav-links {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  gap: 4.8rem;
+
+  background: rgba(255, 255, 255, 100%);
+  border-radius: 100px;
+  padding: 0.8rem;
+  box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 25%);
+}
+
+.main-nav-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4.8rem;
+
+  background: rgba(255, 255, 255, 100%);
+  border-radius: 100px;
+  padding: 0.8rem;
+  box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 25%);
+}
+
+.main-nav-actions form {
+  display: inline;
+}
+
+.main-nav-link:link,
+.main-nav-link:visited,
+.main-nav-action {
+  display: inline-block;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 500;
+  font-size: 1.92rem;
+  padding: 1.2rem 2.4rem;
+  border-radius: 100px;
+  transition: all 0.3s;
+  background-color: #858ae3;
+  box-shadow: 0 0.2rem 0.2rem rgba(0, 0, 0, 25%);
+  cursor: pointer;
+}
+
+.main-nav-link:hover {
+  background-color: #787ccc;
+}
+
+.main-nav-link:active {
+  background-color: #6a6eb6;
+  transform: scale(95%);
+  box-shadow: 0 0.1rem 0.1rem rgba(0, 0, 0, 30%);
+}
+
+.main-nav-link.active:link,
+.main-nav-link.active:visited {
+  background-color: #7209b7;
+}
+
+.main-nav-link.active:hover {
+  background-color: #6708a5;
+}
+
+.main-nav-link.active:active {
+  background-color: #5b0792;
+}
+
+.main-nav-action {
+  font-family: 'Rubik', sans-serif;
+  font-size: 1.92rem;
+  font-weight: 500;
+  padding: 1rem 2.4rem;
+  border: none;
+  border-radius: 100px;
+  background-color: #858ae3;
+  color: #fff;
+  transition: all 0.3s;
+  box-shadow: 0 0.2rem 0.2rem rgba(0, 0, 0, 25%);
+}
+
+.main-nav-action:hover {
+  background-color: #787ccc;
+}
+
+.main-nav-action:active {
+  background-color: #6a6eb6;
+  transform: scale(95%);
+  box-shadow: 0 0.1rem 0.1rem rgba(0, 0, 0, 30%);
+}
+
+.main-nav-action.add {
+  background-color: #f72585;
+}
+
+.main-nav-action.add:hover {
+  background-color: #de2178;
+}
+
+.main-nav-action.add:active {
+  background-color: #c61e6a;
+}
+
+/*******************************/
+/*           CARDS             */
+/*******************************/
+
+.products {
+  justify-items: center;
+  margin-bottom: 9.6rem;
+}
+
+.product {
+  width: 51.2rem;
+  padding: 1.8rem;
+}
+
+.product::after {
+  bottom: -4rem;
+  height: 2.8rem;
+}
+
+.product-img {
+  width: 100%;
+  height: 48.5%;
+  border-radius: 1.6rem;
+  filter: drop-shadow(0 0.2rem 0.6rem rgba(0, 0, 0, 0.25));
+  margin-bottom: 3.2rem;
+}
+
+.product-details {
+  text-align: left;
+}
+
+.product-title {
+  font-size: 3.981rem;
+  color: rgb(72, 12, 168);
+  text-shadow: 0 0.2rem 0.2rem rgba(72, 12, 168, 25%);
+  font-weight: 500;
+  margin-bottom: 1.8rem;
+}
+
+.product-description {
+  font-size: 2.304rem;
+  color: #480ca8;
+  text-shadow: 0 0.2rem 0.2rem rgba(72, 12, 168, 25%);
+  line-height: 1.6;
+  letter-spacing: 0.1rem;
+  margin-bottom: 1.8rem;
+}
+
+.product-price {
+  font-size: 3.318rem;
+  color: #480ca8;
+  text-shadow: 0 0.2rem 0.2rem rgba(72, 12, 168, 25%);
+  line-height: 1.6;
+  letter-spacing: 0.75px;
+}
+
+.card-actions {
+  position: absolute;
+  bottom: -3.5rem;
+  left: 0;
+  display: flex;
+  width: 100.2%;
+}
+
+.add-to-cart,
+.details {
+  font-family: 'Rubik', sans-serif;
+  font-weight: 500;
+  width: 25.7rem;
+  height: 6.5rem;
+  border: none;
+  font-size: 2.304rem;
+  color: #fff;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.add-to-cart {
+  border-bottom-left-radius: 3.2rem;
+  background-color: #f72585;
+}
+
+.add-to-cart:hover {
+  background-color: #de2178;
+}
+
+.add-to-cart:active {
+  background-color: #c61e6a;
+}
+
+.details {
+  border-bottom-right-radius: 3.2rem;
+  background-color: #858ae3;
+}
+
+.details:hover {
+  background-color: #787ccc;
+}
+
+.details:active {
+  background-color: #6a6eb6;
+}
+
+/*******************************/
+/*         PAGINATION          */
+/*******************************/
+
+.pagination {
+  text-align: center;
+}
+
+.pagination-links {
+  position: relative;
+  list-style: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  padding: 0.8rem 1.2rem;
+
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(2rem);
+  border-radius: 100px;
+}
+
+.pagination-links::after {
+  position: absolute;
+  content: '';
+  border: 0.1rem solid rgba(255, 255, 255, 0.3);
+  border-radius: 100px;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  box-shadow: inset 0px 1px 2px rgba(0, 0, 0, 0.25);
+}
+
+.pagination-link:link,
+.pagination-link:visited {
+  font-size: 1.92rem;
+  text-decoration: none;
+  color: #fff;
+  height: 3.2rem;
+  width: 3.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: #858ae3;
+  cursor: pointer;
+  box-shadow: 0 0.2rem 0.2rem rgba(0, 0, 0, 0.25);
+  transition: all 0.3s;
+}
+
+.pagination-link:hover {
+  background-color: #787ccc;
+}
+
+.pagination-link:active {
+  background-color: #6a6eb6;
+}
+
+.pagination-link.active:link,
+.pagination-link.active:visited {
+  background-color: #f72585;
+}
+
+.pagination-link.active:hover {
+  background-color: #de2178;
+}
+
+.pagination-link.active:active {
+  background-color: #c61e6a;
+}
+
+/*******************************/
+/*           FOOTER            */
+/*******************************/
+
+.footer {
+  height: 6.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2.4rem;
+}
+
+.footer-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4.8rem;
+}
+
+.social-links {
+  display: flex;
+  list-style: none;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3.2rem;
+}
+
+.social-link {
+  font-size: 2.304rem;
+  color: #fff;
+}
+
+.author-text {
+  font-family: 'Mali', cursive;
+  font-weight: 700;
+  font-size: 1.6rem;
+  color: #fff;
+  text-transform: uppercase;
+  text-shadow: 0 0.2rem 0.2rem rgba(0, 0, 0, 25%);
+}

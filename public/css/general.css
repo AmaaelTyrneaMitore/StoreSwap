@@ -1,0 +1,210 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: 'Rubik', sans-serif;
+  line-height: 1;
+  font-weight: 400;
+  color: #fff;
+}
+
+.background {
+  min-height: 100%;
+  min-width: 1440px;
+
+  width: 100%;
+  height: auto;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  z-index: -2;
+}
+
+@media screen and (max-width: 1440px) {
+  .background {
+    left: 50%;
+    margin-left: -720px;
+  }
+}
+
+.sphere1 {
+  position: absolute;
+  width: 20.6rem;
+  height: 20.6rem;
+  left: 29rem;
+  top: 65rem;
+  border-radius: 50%;
+  background: radial-gradient(
+    85.55% 85.55% at 15.63% 14.45%,
+    rgba(255, 255, 255, 0.7) 0%,
+    rgba(255, 255, 255, 0.1) 100%
+  );
+  border: 0.1rem solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(0.8rem);
+}
+
+.sphere2 {
+  position: absolute;
+  width: 10.1rem;
+  height: 10.1rem;
+  left: 36rem;
+  top: 15rem;
+  border-radius: 50%;
+  background: radial-gradient(
+    85.55% 85.55% at 15.63% 14.45%,
+    rgba(255, 255, 255, 0.7) 0%,
+    rgba(255, 255, 255, 0.1) 100%
+  );
+  border: 0.1rem solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(0.8rem);
+}
+
+.sphere3 {
+  position: absolute;
+  width: 16.7rem;
+  height: 16.7rem;
+  left: 85rem;
+  top: 42rem;
+  border-radius: 50%;
+  background: radial-gradient(
+    85.55% 85.55% at 15.63% 14.45%,
+    rgba(255, 255, 255, 0.7) 0%,
+    rgba(255, 255, 255, 0.1) 100%
+  );
+  border: 0.1rem solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(0.8rem);
+}
+
+.sphere4 {
+  position: absolute;
+  width: 20.6rem;
+  height: 20.6rem;
+  right: 25rem;
+  top: 37rem;
+  border-radius: 50%;
+  background: radial-gradient(
+    85.55% 85.55% at 15.63% 14.45%,
+    rgba(255, 255, 255, 0.7) 0%,
+    rgba(255, 255, 255, 0.1) 100%
+  );
+  border: 0.1rem solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(0.8rem);
+  z-index: 2;
+}
+
+::-webkit-scrollbar {
+  width: 1.2rem;
+  background: #858ae3;
+}
+
+::-webkit-scrollbar-track {
+  background: #858ae3;
+  border-radius: 100px;
+  margin-block: 1rem;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #f72585;
+  border: 0.3rem solid #858ae3;
+  border-radius: 100px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #de2178;
+}
+
+@supports (scrollbar-color: #858ae3 #f72585) {
+  * {
+    scrollbar-color: #f72585 #858ae3;
+    scrollbar-width: auto;
+  }
+}
+
+/*******************************/
+/* GENERAL/REUSABLE COMPONENTS */
+/*******************************/
+
+.container {
+  max-width: 120rem;
+  margin: 0 auto;
+  padding: 0 3.2rem;
+}
+
+.grid {
+  display: grid;
+  column-gap: 8rem;
+  row-gap: 6.4rem;
+}
+
+.grid--2-cols {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* card */
+.card {
+  position: relative;
+  background: radial-gradient(
+    98.41% 98.41% at 1.95% 1.59%,
+    rgba(255, 255, 255, 0.49) 0%,
+    rgba(255, 255, 255, 0.07) 100%
+  );
+  backdrop-filter: blur(1rem);
+  border-radius: 3.2rem;
+  text-align: center;
+}
+
+/* card border */
+.card::before {
+  top: 0;
+  left: 0;
+  width: 99.8%;
+  height: 100%;
+  display: block;
+  position: absolute;
+  content: '';
+  border: 0.1rem solid rgba(255, 255, 255, 0.3);
+  z-index: -1;
+  border-radius: 3.2rem;
+}
+
+/* card shadow */
+.card::after {
+  content: '';
+  z-index: -1;
+  width: 100%;
+  height: 2.8rem;
+  position: absolute;
+  bottom: -2.5rem;
+  left: 0rem;
+  background: rgba(0, 0, 0, 0.25);
+  filter: blur(2rem);
+}
+
+.card.card--linear {
+  background: linear-gradient(
+    107.91deg,
+    rgba(255, 255, 255, 0.4) 2.46%,
+    rgba(255, 255, 255, 0.1) 96.67%
+  );
+}
+
+/*******************************/
+/*        HELPER CLASSES       */
+/*******************************/
+
+.margin-bottom-sm {
+  margin-bottom: 6.4rem !important;
+}
+
+.margin-bottom-md {
+  margin-bottom: 8rem !important;
+}

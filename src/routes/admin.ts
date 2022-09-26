@@ -2,16 +2,26 @@ import { Router } from 'express';
 
 const router = Router();
 
+interface Product {
+  title: string;
+}
+
+const products: Product[] = [];
+
 router
   .route('/add-product')
-  .get((req, res, next) => {
-    res.send(
-      '<form action="/admin/add-product" method="POST"><input type="text" name="title" /><button type="submit">Add Product</button></form>'
-    );
+  .get((_req, res, _next) => {
+    res.render('add-product', {
+      pageTitle: 'Add Product ― Store Swap',
+      path: '/admin/add-product',
+    });
   })
-  .post((req, res, next) => {
-    console.log(req.body);
+  .post((req, res, _next) => {
+    products.push({ title: (req.body as { title: string }).title });
     res.redirect('/');
   });
 
-export default router;
+export default {
+  router,
+  products,
+};
