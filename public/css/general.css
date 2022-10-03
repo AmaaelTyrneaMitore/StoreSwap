@@ -9,7 +9,7 @@ html {
 }
 
 body {
-  font-family: 'Rubik', sans-serif;
+  font-family: "Rubik", sans-serif;
   line-height: 1;
   font-weight: 400;
   color: #fff;
@@ -170,7 +170,7 @@ body {
   height: 100%;
   display: block;
   position: absolute;
-  content: '';
+  content: "";
   border: 0.1rem solid rgba(255, 255, 255, 0.3);
   z-index: -1;
   border-radius: 3.2rem;
@@ -178,7 +178,7 @@ body {
 
 /* card shadow */
 .card::after {
-  content: '';
+  content: "";
   z-index: -1;
   width: 100%;
   height: 2.8rem;
