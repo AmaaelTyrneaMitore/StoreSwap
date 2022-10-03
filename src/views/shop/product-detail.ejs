@@ -1,0 +1,47 @@
+<link rel="stylesheet" href="/css/forms.css">
+<link rel="stylesheet" href="/css/error.css" />
+<%- include('../includes/head.ejs') %>
+
+</head>
+<body>
+  <img class="background" src="/images/background@2x.jpg" alt="" />
+  <div class="sphere1"></div>
+  <div class="sphere2"></div>
+  <div class="sphere3"></div>
+  <div class="sphere4"></div>
+
+  <%- include('../includes/navigation.ejs') %>
+    
+    <!-- MAIN CONTENT -->
+    <main>
+      <div class="container margin-bottom-sm">
+        <!-- CARD GRID -->
+        <div
+          class="product-details-container error-card grid grid--2-cols card"
+        >
+          <!-- CARD -->
+          <div class="product-img-container">
+            <img
+              src="images/test-product.jpg"
+              alt="Purple Shoes"
+              class="product-img"
+            />
+          </div>
+
+          <div class="product-details product-details--lg">
+            <p class="product-title">Lorem ipsum dolor</p>
+            <p class="product-description">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tincidunt
+              amet magna consequat suspendisse ullamcorper morbi. Quis sit velit
+              sem nam facilisi sem. Pretium nec nisl vehicula. Lorem ipsum,
+              dolor sit amet consectetur adipisicing elit.
+            </p>
+            <p class="product-price"><span>$</span>233.34</p>
+          </div>
+          <form action="/" method="get">
+            <button class="submit-btn" type="submit">Add To Cart</button>
+          </form>
+        </div>
+
+        
+<%- include('../includes/end.ejs') %>

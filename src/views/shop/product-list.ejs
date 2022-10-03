@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="/css/error.css" />
-<%- include('includes/head.ejs') %>
+<%- include('../includes/head.ejs') %>
 
 </head>
 <body>
@@ -9,7 +9,7 @@
   <div class="sphere3"></div>
   <div class="sphere4"></div>
 
-  <%- include('includes/navigation.ejs') %>
+  <%- include('../includes/navigation.ejs') %>
     
     <!-- MAIN CONTENT -->
     <main>
@@ -22,22 +22,24 @@
           <div class="product card">
             <img
               src="/images/test-product.jpg"
-              alt="Purple Shoes"
+              alt="<%= product.title %>"
               class="product-img"
             />
 
             <div class="product-details">
-              <p class="product-title">Lorem ipsum dolor</p>
-              <p class="product-description">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                Recusandae minus sapiente delectus earum.
-              </p>
-              <p class="product-price">$233.34</p>
+              <p class="product-title"><%= product.title %></p>
+              <p class="product-description"><%= product.description.length > 100 ? product.description.slice(0, 99).trim() + '...' : product.description %></p>
+              <p class="product-price">$<%= product.price %></p>
             </div>
 
             <div class="card-actions">
-              <button class="add-to-cart">Add To Cart</button>
-              <button class="details">Details</button>
+              <form action="/add-to-cart" method="post">
+                <button class="add-to-cart">Add To Cart</button>
+              </form>
+              
+              <form action="/product-details/<%= product.id %>" method="get">
+                <button class="details">Details</button>
+              </form>
             </div>
           </div>
           <% } %>
@@ -67,4 +69,4 @@
             <p class="error-message">[🛍️ Products took a sabbatical 🛒]</p>
           </div>
         <% } %>
-<%- include('includes/end.ejs') %>
+<%- include('../includes/end.ejs') %>

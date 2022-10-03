@@ -14,12 +14,12 @@
           >
         </li>
         <li>
-          <a class="main-nav-link" href="/"
+          <a class="main-nav-link <%= path === '/cart' ? 'active' : '' %>" href="/cart"
             ><i class="fa-solid fa-cart-shopping"></i> Cart</a
           >
         </li>
         <li>
-          <a class="main-nav-link" href="/"
+          <a class="main-nav-link <%= path === '/orders' ? 'active' : '' %>" href="/orders"
             ><i class="fa-solid fa-truck-fast"></i> Orders</a
           >
         </li>
@@ -35,7 +35,7 @@
     </form>
 
     <form action="/admin/products" method="get">
-      <button class="main-nav-action">
+      <button class="main-nav-action <%= path === '/admin/products' ? 'active' : '' %>">
         <i class="fa-solid fa-key"></i> Admin
       </button>
     </form>

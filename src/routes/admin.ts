@@ -1,27 +1,15 @@
 import { Router } from 'express';
 
+import {
+  getAddProduct,
+  getProducts,
+  postAddProduct,
+} from '../controllers/admin';
+
 const router = Router();
 
-interface Product {
-  title: string;
-}
+router.route('/add-product').get(getAddProduct).post(postAddProduct);
 
-const products: Product[] = [];
+router.route('/products').get(getProducts);
 
-router
-  .route('/add-product')
-  .get((_req, res, _next) => {
-    res.render('add-product', {
-      pageTitle: 'Add Product ― Store Swap',
-      path: '/admin/add-product',
-    });
-  })
-  .post((req, res, _next) => {
-    products.push({ title: (req.body as { title: string }).title });
-    res.redirect('/');
-  });
-
-export default {
-  router,
-  products,
-};
+export default router;

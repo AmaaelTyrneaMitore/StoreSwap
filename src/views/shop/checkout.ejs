@@ -1,0 +1,46 @@
+<link rel="stylesheet" href="/css/forms.css">
+<link rel="stylesheet" href="/css/error.css" />
+<%- include('../includes/head.ejs') %>
+
+</head>
+<body>
+  <img class="background" src="/images/background@2x.jpg" alt="" />
+
+  <%- include('../includes/navigation.ejs') %>
+    
+    <!-- MAIN CONTENT -->
+    <main>
+      <div class="container cart-products-list margin-bottom-md">
+        <!-- CARD GRID -->
+        <div class="cart-products-container card card--linear margin-bottom-md">
+          <p class="product-title">Lorem ipsum dolor</p>
+          <p class="product-price"><span>Quantity: </span>1</p>
+        </div>
+        <div class="cart-products-container card card--linear margin-bottom-md">
+          <p class="product-title">Lorem ipsum dolor</p>
+          <p class="product-price"><span>Quantity: </span>1</p>
+        </div>
+        <div class="cart-products-container card card--linear margin-bottom-md">
+          <p class="product-title">Lorem ipsum dolor</p>
+          <p class="product-price"><span>Quantity: </span>1</p>
+        </div>
+        <div class="cart-products-container card card--linear margin-bottom-md">
+          <p class="product-title">Lorem ipsum dolor</p>
+          <p class="product-price"><span>Quantity: </span>1</p>
+        </div>
+        <div class="cart-products-container card card--linear margin-bottom-md">
+          <p class="product-title">Lorem ipsum dolor</p>
+          <p class="product-price"><span>Quantity: </span>1</p>
+        </div>
+        <div class="cart-products-container card card--linear margin-bottom-md">
+          <p class="product-title">Lorem ipsum dolor</p>
+          <p class="product-price"><span>Quantity: </span>1</p>
+        </div>
+      </div>
+      <div class="checkout margin-bottom-sm">
+        <p class="product-price"><span>Total: $</span>1433.44</p>
+        <form action="/checkout" method="get">
+          <button class="submit-btn">Checkout</button>
+        </form>
+        
+<%- include('../includes/end.ejs') %>

@@ -1,8 +1,10 @@
 import express from 'express';
 import { join } from 'path';
 
-import admin from './routes/admin';
+import adminRoutes from './routes/admin';
 import shopRoutes from './routes/shop';
+
+import { get404 } from './controllers/errors';
 
 import rootDir from './utils/path';
 
@@ -17,15 +19,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(join(__dirname, '..', 'public')));
 
 // route handling middlewares
-app.use('/admin', admin.router);
+app.use('/admin', adminRoutes);
 app.use(shopRoutes);
 
 // 404 route handling middleware
-app.use((_req, res, _next) => {
-  res
-    .status(404)
-    .render('404', { pageTitle: '404 ― Page not found!', path: '' });
-});
+app.use(get404);
 
 app.listen(PORT, () => {
   // console.clear();

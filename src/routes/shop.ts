@@ -1,16 +1,20 @@
 import { Router } from 'express';
 
-import admin from '../routes/admin';
+import {
+  getCart,
+  getCheckout,
+  getProducts,
+  getOrders,
+} from '../controllers/shop';
 
 const router = Router();
 
-router.route('/').get((_req, res, _next) => {
-  const { products } = admin;
-  res.render('shop', {
-    pageTitle: 'StoreSwap ― A shop for all your needs',
-    path: '/',
-    products,
-  });
-});
+router.route('/').get(getProducts);
+
+router.route('/cart').get(getCart);
+
+router.route('/checkout').get(getCheckout);
+
+router.route('/orders').get(getOrders);
 
 export default router;
