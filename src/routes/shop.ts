@@ -5,13 +5,17 @@ import {
   getCheckout,
   getProducts,
   getOrders,
+  getProduct,
+  postCart,
 } from '../controllers/shop';
 
 const router = Router();
 
 router.route('/').get(getProducts);
 
-router.route('/cart').get(getCart);
+router.route('/products/:productId').get(getProduct);
+
+router.route('/cart').get(getCart).post(postCart);
 
 router.route('/checkout').get(getCheckout);
 

@@ -11,11 +11,35 @@ export const getProducts: RequestHandler = async (_req, res, _next) => {
   });
 };
 
+export const getProduct: RequestHandler<{ productId: string }> = async (
+  req,
+  res,
+  _next
+) => {
+  const productId = req.params.productId;
+  const product = await Product.find(productId);
+  res.render('shop/product-detail', {
+    pageTitle: product?.title,
+    path: '/products',
+    product,
+  });
+};
+
 export const getCart: RequestHandler = (_req, res, _next) => {
   res.render('shop/cart', {
     path: '/cart',
     pageTitle: 'My Cart',
   });
+};
+
+export const postCart: RequestHandler<unknown, unknown, Product> = (
+  req,
+  res,
+  _next
+) => {
+  const { id: productId } = req.body;
+  console.log(productId);
+  res.redirect('/cart');
 };
 
 export const getCheckout: RequestHandler = (_req, res, _next) => {
