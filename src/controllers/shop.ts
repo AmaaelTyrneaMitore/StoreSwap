@@ -1,6 +1,7 @@
 import { RequestHandler } from 'express';
 
 import Product from '../models/product';
+import Cart from '../models/cart';
 
 export const getProducts: RequestHandler = async (_req, res, _next) => {
   const products = await Product.fetchAll();
@@ -32,13 +33,16 @@ export const getCart: RequestHandler = (_req, res, _next) => {
   });
 };
 
-export const postCart: RequestHandler<unknown, unknown, Product> = (
+export const postCart: RequestHandler<unknown, unknown, Product> = async (
   req,
   res,
   _next
 ) => {
   const { id: productId } = req.body;
-  console.log(productId);
+  const product = await Product.find(productId);
+  if (product) {
+    Cart.addProduct(productId, product.price);
+  }
   res.redirect('/cart');
 };
 

@@ -15,7 +15,7 @@ export const postAddProduct: RequestHandler<unknown, unknown, Product> = (
   _next
 ) => {
   const { title, price, description } = req.body;
-  new Product(title, description, price).save();
+  new Product(title, description, Number(price)).save();
   res.redirect('/');
 };
 
