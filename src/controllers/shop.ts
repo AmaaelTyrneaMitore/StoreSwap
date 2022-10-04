@@ -39,9 +39,9 @@ export const postCart: RequestHandler<unknown, unknown, Product> = async (
   _next
 ) => {
   const { id: productId } = req.body;
-  const product = await Product.find(productId);
+  const product = await Product.find(productId as string);
   if (product) {
-    Cart.addProduct(productId, product.price);
+    Cart.addProduct(productId as string, product.price);
   }
   res.redirect('/cart');
 };

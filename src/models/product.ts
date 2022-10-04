@@ -21,7 +21,7 @@ export default class Product {
     public title: string,
     public description: string,
     public price: number,
-    public id = randomUUID()
+    public id?: string
   ) {}
 
   static async fetchAll() {
@@ -36,8 +36,20 @@ export default class Product {
     let products: Product[] = [];
     try {
       products = await getProductsFromFile();
-      products.push(this);
-      await writeFile(path, JSON.stringify(products));
+      // in case of exisiting product, update it with new data
+      if (this.id) {
+        const existingProductIndex = products.findIndex(
+          (product) => product.id === this.id
+        );
+        const updatedProducts = [...products];
+        updatedProducts[existingProductIndex] = this;
+        await writeFile(path, JSON.stringify(updatedProducts));
+      } else {
+        // in case of a new product, simply add it and give it an id
+        this.id = randomUUID();
+        products.push(this);
+        await writeFile(path, JSON.stringify(products));
+      }
     } catch (err) {
       console.log(err);
     }

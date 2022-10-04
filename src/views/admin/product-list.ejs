@@ -33,11 +33,11 @@
             </div>
 
             <div class="card-actions">
-              <form action="/admin/edit-product" method="get">
-                <button class="add-to-cart">Edit Product</button>
+              <form action="/admin/edit-product/<%= product.id %>?edit=true" method="post">
+                  <button class="add-to-cart" type="submit">Edit Product</button>
               </form>
               
-              <form action="/" method="post">
+              <form action="/" method="get">
                 <button class="details">Delete</button>
               </form>
             </div>
