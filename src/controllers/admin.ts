@@ -50,7 +50,7 @@ export const getEditProduct: RequestHandler<
 export const postEditProduct: RequestHandler<
   unknown,
   unknown,
-  Product
+  Omit<Product, 'save'>
 > = async (req, res, _next) => {
   // fetch information for the product
   const {
@@ -61,6 +61,16 @@ export const postEditProduct: RequestHandler<
   } = req.body;
   // create a new product instance and populate it with that info and then call save on it
   new Product(updatedTitle, updatedDescription, updatedPrice, productId).save();
+  res.redirect('/admin/products');
+};
+
+export const postDeleteProduct: RequestHandler<
+  unknown,
+  unknown,
+  { id: string }
+> = async (req, res, _next) => {
+  const { id: productId } = req.body;
+  await Product.delete(productId);
   res.redirect('/admin/products');
 };
 

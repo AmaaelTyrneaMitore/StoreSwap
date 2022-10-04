@@ -37,8 +37,9 @@
                   <button class="add-to-cart" type="submit">Edit Product</button>
               </form>
               
-              <form action="/" method="get">
-                <button class="details">Delete</button>
+              <form action="/admin/delete-product" method="post">
+                <button class="details" type="submit">Delete</button>
+                <input type="hidden" name="id" value="<%= product.id %>">
               </form>
             </div>
           </div>

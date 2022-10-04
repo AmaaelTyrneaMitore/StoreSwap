@@ -60,4 +60,27 @@ export default class Cart {
       console.log(err);
     }
   }
+
+  static async deleteProduct(id: string, productPrice: number) {
+    let cart: CartItemInterface = { products: [], totalPrice: 0 };
+    try {
+      const fileContent = await readFile(path, { encoding: 'utf-8' });
+      cart = JSON.parse(fileContent);
+
+      const updatedCart = { ...cart };
+      const product = updatedCart.products.find((product) => product.id === id);
+      // when deleting a product, if the product is not part of the cart then simply return
+      if (!product) return;
+
+      updatedCart.products = updatedCart.products.filter(
+        (product) => product.id !== id
+      );
+      updatedCart.totalPrice -= productPrice * product.quantity;
+      await writeFile(path, JSON.stringify(updatedCart));
+    } catch (err) {
+      // if we get error that means we have no cart and that means that there's nothing
+      // to delete, so we can simply ignore this
+      return;
+    }
+  }
 }

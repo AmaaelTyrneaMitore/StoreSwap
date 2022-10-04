@@ -2,6 +2,7 @@ import { readFile, writeFile } from 'fs/promises';
 import { join } from 'path';
 import { randomUUID } from 'crypto';
 
+import Cart from './cart';
 import rootDir from '../utils/path';
 
 const getProductsFromFile = async (): Promise<[] | Product[]> => {
@@ -30,6 +31,18 @@ export default class Product {
 
   static async find(id: string) {
     return (await getProductsFromFile()).find((product) => product.id === id);
+  }
+
+  static async delete(id: string) {
+    let products = await getProductsFromFile();
+    const product = products.find((product) => product.id === id);
+    products = products.filter((product) => product.id !== id);
+    try {
+      await writeFile(path, JSON.stringify(products));
+      await Cart.deleteProduct(id, product?.price as number);
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   async save() {
