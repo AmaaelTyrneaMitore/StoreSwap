@@ -423,12 +423,34 @@
 }
 
 .cart-products-container {
-  padding: 2.4rem;
+  list-style: none;
+  padding: 4.8rem;
 }
 
 .cart-products-container::after {
   height: 4%;
   display: none;
+}
+
+.cart-product-details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.submit-btn.delete {
+  margin-top: 2.4rem;
+  width: 100%;
+  background-color: #858ae3;
+  box-shadow: 0 0.4rem 0.6rem rgba(0, 0, 0, 0.1);
+}
+
+.submit-btn.delete:hover {
+  background-color: #787ccc;
+}
+
+.submit-btn.delete:active {
+  background-color: #6a6eb6;
 }
 
 .checkout {

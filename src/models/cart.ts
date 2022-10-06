@@ -83,4 +83,15 @@ export default class Cart {
       return;
     }
   }
+
+  static async getCart() {
+    let cart: CartItemInterface = { products: [], totalPrice: 0 };
+    try {
+      const fileContent = await readFile(path, { encoding: 'utf8' });
+      cart = JSON.parse(fileContent);
+      return cart;
+    } catch (err) {
+      return null;
+    }
+  }
 }

@@ -11,31 +11,18 @@
     <!-- MAIN CONTENT -->
     <main>
       <div class="container cart-products-list margin-bottom-md">
-        <!-- CARD GRID -->
-        <div class="cart-products-container card card--linear margin-bottom-md">
-          <p class="product-title">Lorem ipsum dolor</p>
-          <p class="product-price"><span>Quantity: </span>1</p>
-        </div>
-        <div class="cart-products-container card card--linear margin-bottom-md">
-          <p class="product-title">Lorem ipsum dolor</p>
-          <p class="product-price"><span>Quantity: </span>1</p>
-        </div>
-        <div class="cart-products-container card card--linear margin-bottom-md">
-          <p class="product-title">Lorem ipsum dolor</p>
-          <p class="product-price"><span>Quantity: </span>1</p>
-        </div>
-        <div class="cart-products-container card card--linear margin-bottom-md">
-          <p class="product-title">Lorem ipsum dolor</p>
-          <p class="product-price"><span>Quantity: </span>1</p>
-        </div>
-        <div class="cart-products-container card card--linear margin-bottom-md">
-          <p class="product-title">Lorem ipsum dolor</p>
-          <p class="product-price"><span>Quantity: </span>1</p>
-        </div>
-        <div class="cart-products-container card card--linear margin-bottom-md">
-          <p class="product-title">Lorem ipsum dolor</p>
-          <p class="product-price"><span>Quantity: </span>1</p>
-        </div>
+        <!-- CARD -->
+        <ul>
+          <li class="cart-products-container card card--linear margin-bottom-md">
+            <div class="cart-product-details">
+              <p class="product-title">Lorem ipsum dolor</p>
+              <p class="product-price"><span>Quantity: </span>1</p>
+            </div>
+            <form action="/checkout" method="get">
+              <button class="submit-btn delete">Delete</button>
+            </form>
+          </li>
+        </ul>
       </div>
       <div class="checkout margin-bottom-sm">
         <p class="product-price"><span>Total: $</span>1433.44</p>
