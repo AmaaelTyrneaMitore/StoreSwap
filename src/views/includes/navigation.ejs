@@ -1,48 +1,63 @@
 <!-- HEADER -->
 <header class="header margin-bottom-md">
-  <div class="main-nav">
+  <nav class="main-nav">
     <a class="logo" href="/">
       <img class="logo-img" src="/images/logo.svg" alt="StoreSwap Logo" />
       <p class="logo-text">StoreSwap</p>
     </a>
 
-    <nav>
+    <div>
       <ul class="main-nav-links">
         <li>
-          <a class="main-nav-link <%= path === '/' ? 'active' : '' %>" href="/"
+          <a
+            class="main-nav-link <%= path === '/' ? 'active' : '' %>"
+            href="/"
             ><i class="fa-solid fa-shop"></i> Shop</a
           >
         </li>
         <li>
-          <a class="main-nav-link <%= path === '/cart' ? 'active' : '' %>" href="/cart"
+          <a
+            class="main-nav-link <%= path === '/cart' ? 'active' : '' %>"
+            href="/cart"
             ><i class="fa-solid fa-cart-shopping"></i> Cart</a
           >
         </li>
         <li>
-          <a class="main-nav-link <%= path === '/orders' ? 'active' : '' %>" href="/orders"
+          <a class="main-nav-link" href="/orders"
             ><i class="fa-solid fa-truck-fast"></i> Orders</a
           >
         </li>
       </ul>
-    </nav>
-  </div>
+    </div>
 
-  <div class="main-nav-actions">
-    <form action="/admin/add-product" method="get">
-      <button class="main-nav-action add">
-        <i class="fa-solid fa-circle-plus"></i> Add
-      </button>
-    </form>
+    <div class="main-nav-actions">
+      <form action="/admin/add-product" method="get">
+        <button class="main-nav-action add">
+          <i class="fa-solid fa-circle-plus"></i> Add
+        </button>
+      </form>
 
-    <form action="/admin/products" method="get">
-      <button class="main-nav-action <%= path === '/admin/products' ? 'active' : '' %>">
-        <i class="fa-solid fa-key"></i> Admin
+      <form action="/admin/products" method="get">
+        <button
+          class="main-nav-action <%= path === '/admin/products' ? 'active' : '' %>"
+        >
+          <i class="fa-solid fa-key"></i> Admin
+        </button>
+      </form>
+      <form action="/" method="get">
+        <button class="main-nav-action">
+          <i class="fa-solid fa-right-from-bracket"></i> Logout
+        </button>
+      </form>
+    </div>
+
+    <div class="responsive-actions">
+      <button class="hamburger-menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
       </button>
-    </form>
-    <form action="/" method="get">
-      <button class="main-nav-action">
-        <i class="fa-solid fa-right-from-bracket"></i> Logout
-      </button>
-    </form>
-  </div>
+      <button class="admin"><i class="fa-solid fa-user"></i></button>
+    </div>
+  </nav>
 </header>

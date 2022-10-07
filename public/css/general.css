@@ -9,7 +9,7 @@ html {
 }
 
 body {
-  font-family: "Rubik", sans-serif;
+  font-family: 'Rubik', sans-serif;
   line-height: 1;
   font-weight: 400;
   color: #fff;
@@ -101,6 +101,15 @@ body {
   z-index: 2;
 }
 
+:focus {
+  outline: 0.4rem solid rgba(72, 12, 168, 0.7);
+  outline-offset: 0.4rem;
+}
+
+::-moz-focus-inner {
+  border: 0;
+}
+
 ::-webkit-scrollbar {
   width: 1.2rem;
   background: #858ae3;
@@ -170,7 +179,7 @@ body {
   height: 100%;
   display: block;
   position: absolute;
-  content: "";
+  content: '';
   border: 0.1rem solid rgba(255, 255, 255, 0.3);
   z-index: -1;
   border-radius: 3.2rem;
@@ -178,7 +187,7 @@ body {
 
 /* card shadow */
 .card::after {
-  content: "";
+  content: '';
   z-index: -1;
   width: 100%;
   height: 2.8rem;

@@ -1,17 +1,16 @@
-<link rel="stylesheet" href="/css/error.css" />
 <%- include('../includes/head.ejs') %>
+<link rel="stylesheet" href="/css/error.css" />
+<link rel="stylesheet" href="/css/queries.css" />
 
 </head>
 <body>
   <img class="background" src="/images/background@2x.jpg" alt="" />
-  <div class="sphere1"></div>
+  <!-- <div class="sphere1"></div>
   <div class="sphere2"></div>
   <div class="sphere3"></div>
-  <div class="sphere4"></div>
+  <div class="sphere4"></div> -->
 
   <%- include('../includes/navigation.ejs') %>
-    
-    <!-- MAIN CONTENT -->
     <main>
       <div class="container">
         <% if (products.length > 0) { %>
@@ -37,7 +36,7 @@
                 <button class="add-to-cart">Add To Cart</button>
                 <input type="hidden" name="id" value="<%= product.id %>">
               </form>
-              
+
               <form action="/products/<%= product.id %>" method="get">
                 <button class="details">Details</button>
               </form>
@@ -45,7 +44,6 @@
           </div>
           <% } %>
         </div>
-
         <!-- PAGINATION -->
         <nav class="pagination margin-bottom-md">
           <ul class="pagination-links">
@@ -54,20 +52,19 @@
             <li><a href="#" class="pagination-link">3</a></li>
             <li><a href="#" class="pagination-link">4</a></li>
             <li><a href="#" class="pagination-link">5</a></li>
-            <li><a href="#" class="pagination-link">6</a></li>
-            <li><a href="#" class="pagination-link">7</a></li>
-            <li><a href="#" class="pagination-link">8</a></li>
-            <li><a href="#" class="pagination-link">9</a></li>
           </ul>
         </nav>
-        <% } else {%>
+        <% } else { %>
           <div class="error-card card card--linear margin-bottom-sm">
-            <h1 class="error-code">Boo<i class="fa-solid fa-ghost"></i>!</h1>
-            <p class="error-title">No Products Found!</p>
-            <p class="error-subtitle margin-bottom-sm">
-              But you can create new ones!
-            </p>
-            <p class="error-message">[🛍️ Products took a sabbatical 🛒]</p>
-          </div>
-        <% } %>
+          <h1 class="error-code">Boo<i class="fa-solid fa-ghost"></i>!</h1>
+          <p class="error-title">No Products Found!</p>
+          <p class="error-subtitle margin-bottom-sm">
+            But you can create new ones!
+          </p>
+          <p class="error-message">[🛍️ Products took a sabbatical 🛒]</p>
+        </div>
+        <% } %> 
+
+
+
 <%- include('../includes/end.ejs') %>

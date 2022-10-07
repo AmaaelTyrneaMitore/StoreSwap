@@ -1,11 +1,13 @@
 .error-card {
-  width: 117.8rem;
-  height: 66.2rem;
   padding: 2.4rem;
 }
 
+.error-card::before {
+  height: 99%;
+}
+
 .error-card::after {
-  height: 1.5rem;
+  height: 1.2rem;
 }
 
 .error-card p {
