@@ -7,6 +7,7 @@ import shopRoutes from './routes/shop';
 import { get404 } from './controllers/errors';
 
 import rootDir from './utils/path';
+import { printNetworkIfaceNames } from './utils/net';
 
 const app = express();
 const PORT = 3000;
@@ -26,7 +27,6 @@ app.use(shopRoutes);
 app.use(get404);
 
 app.listen(PORT, () => {
-  // console.clear();
   console.log(`[+] Listening at PORT: ${PORT}`);
-  console.log(`[+] Visit http://localhost:${PORT}`);
+  printNetworkIfaceNames(PORT);
 });
