@@ -475,7 +475,7 @@
 
 .cart-products-list {
   height: 64rem;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .cart-products-container {
