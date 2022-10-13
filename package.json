@@ -3,9 +3,14 @@
   "version": "1.0.0",
   "description": "It is a full-fledged ECommerce application powered by Express, NodeJS, EJS and TypeScript that implements MVC pattern and the API adheres to the REST architecture.",
   "main": "dist/app.js",
+  "engines": {
+    "node": "v16.16.0"
+  },
   "scripts": {
-    "build": "tsc && node dist/app.js",
-    "start": "./node_modules/nodemon/bin/nodemon.js -e ts  --exec \"npm run build\""
+    "build": "./node_modules/typescript/bin/tsc",
+    "start": "node ./dist/app.js",
+    "start:dev": "./node_modules/nodemon/bin/nodemon.js --config ./nodemon.dev.json -e ts --exec \"npm run build && npm start\"",
+    "start:prod": "./node_modules/nodemon/bin/nodemon.js --config ./nodemon.prod.json -e ts --exec \"npm run build && npm start\""
   },
   "repository": {
     "type": "git",

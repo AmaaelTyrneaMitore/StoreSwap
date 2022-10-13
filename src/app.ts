@@ -10,7 +10,7 @@ import rootDir from './utils/path';
 import { printNetworkIfaceNames } from './utils/net';
 
 const app = express();
-const PORT = 3000;
+const PORT = Number(process.env.PORT) || 3000;
 
 app.set('view engine', 'ejs');
 app.set('views', join(rootDir, '..', 'src', 'views'));
