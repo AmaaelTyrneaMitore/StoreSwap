@@ -5,22 +5,38 @@ It is a full-fledged **ECommerce application** powered by **Express**, **NodeJS*
 
 ### Key Features 🔑
 - Users can create an account using their email. They will receive a welcome email once the account is successfully created.
-- They can use the same email to reset their password. A password reset link will be provided on that email, which will be valid for only 1 hour.
+- They can use the same email to reset their password. A password reset link will be provided in that email, which will be valid for only 1 hour.
 - They can create a product that they want to sell, and it will be listed on the Products page. An authenticated user can perform edit and delete operations only on the products that belong to that user.
-- An authenticated user can also add products from the Product page to their cart. And later, they can also buy it. They'll be redirected to the payment page where they can enter their credit card details (don't enter your real credentials, use the dummy credentials that are given below) and as soon as the transaction completes, they are  redirected to the Orders page.
-- And there they can also download the order receipt in PDF format that will be generated on the fly.
+- An authenticated user can also add products from the Product page to their cart. And later, they can also buy it. They'll be redirected to the payment page where they can enter their credit card details (don't enter your real credentials, use the dummy credentials that are provided [**here**](https://github.com/AmaaelTyrneaMitore/StoreSwap#simulating-payments-to-test-stripe-integration-)) and as soon as the transaction completes, they are redirected to the Orders page.
+- And there they can also download the order receipt which will be generated on the fly.
 
 ### Wait!! There's more! 🥳
-Besides all that, it utilizes all the latest features like data streaming, utilization of meaninful status codes, pagination, input and file validation, async/await syntax and best practices for writing code that is flexible and re-usable and which is easily testable and maintanable.
+Besides all that, it utilizes all the latest features like data streaming, utilization of meaningful status codes, pagination, input and file validation, async/await syntax and best practices for writing code that is flexible and re-usable and which is easily testable and maintainable.
 
 ### What's the idea behind it? 🥸
 
-I created this application as a lunch time project in order to test and sharpen my newly learned skills. And that's why it has all the cool features that you might find in a typical modern ECommerce application, but not all of them. Also, as I mentioned, I am still learning and therefore, If you think that there's anything that you would like to add or that can be refined, please feel free to create a PR because that would be really helpful.
+I created this application as a lunchtime project to test and sharpen my newly learned skills. And that's why it has all the cool features that you might find in a typical modern ECommerce application, but not all of them. Also, as I mentioned, I am still learning and therefore, If you think that there's anything that you would like to add or that can be refined, please feel free to create a PR because that would be helpful.
 
 ### Running On Your Local Machine 🚀
 - First clone this repo by running the `git clone git@github.com:AmaaelTyrneaMitore/StoreSwap.git` command.
-- Now make sure to install all the project dependencies by running the `npm i` command.
-- Now, if you're contributing , it's recommended to install dev dependencies as well by running the `npm i -D` command to make sure you have a smooth development experience and also it will install the types for all the 3rd-party libraries used in this project.
-- Make sure Node.js is installed (>= V16) and if you didn't install the dev dependencies then make sure Typescript and Nodemon are installed, either globally or locally.
-- Now you can run `npm start` to run development server on `localhost:3000`. 
-- The `npm run build` command will start the production server on the same port.
+- Now make sure to install all the project dependencies by running the `npm i` command. It will install all the dependencies that are necessary for running the project and make sure you have a smooth development experience.
+- Make sure `node` (`>= V16`) is installed and if you didn't install the dev dependencies then make sure `typescript` and `nodemon` are installed globally.
+- Now create `nodemon.dev.json` and `nodemon.prod.json` files in the project root and populate them with the following content:
+    ``` js
+    {
+      "env": {
+        "MONGO_USER": "",
+        "MONGO_PASS": "",
+        "MONGO_DEFAULT_DB": "",
+        "STRIPE_KEY": "",
+        "NODE_ENV": ""
+      }
+    }
+    ```
+- Now you can set all the environment variables that you want to use during development in `nodemon.dev.json` and running the `npm run start:dev` command will spin up a development server on `http://localhost:3000/` using this config file. And running the `npm run start:prod` command will spin up the production server on the same port which will use the `nodemon.prod.json` config file, so make sure to set the `"NODE_ENV"` to `"development"` in `nodemon.dev.json` file, and set this to `"production"` in `nodemon.prod.json` file.
+
+    ***NOTE:*** Although the above configuration is the recommended way of setting up your development environment, you don't have to follow this approach.
+    
+### Simulating Payments To Test Stripe Integration 💷
+You can read all about it in [**Stripe's official documentation**](https://stripe.com/docs/testing?numbers-or-method-or-token=card-numbers) on testing your API keys.
+
