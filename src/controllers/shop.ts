@@ -1,10 +1,11 @@
 import { RequestHandler } from 'express';
+import { ObjectId } from 'mongodb';
 
 import Product from '../models/product.js';
 // import Cart from '../models/cart.js';
 
 export const getProducts: RequestHandler = async (_req, res, _next) => {
-  const products = (await Product.fetchAll()) as Product[];
+  const products = await Product.fetchAll();
   res.render('shop/product-list', {
     pageTitle: 'StoreSwap ― A shop for all your needs',
     path: '/',
@@ -12,19 +13,26 @@ export const getProducts: RequestHandler = async (_req, res, _next) => {
   });
 };
 
-// export const getProduct: RequestHandler<{ productId: string }> = async (
-//   req,
-//   res,
-//   _next
-// ) => {
-//   const productId = req.params.productId;
-//   const product = await Product.find(productId);
-//   res.render('shop/product-detail', {
-//     pageTitle: product?.title,
-//     path: '/products',
-//     product,
-//   });
-// };
+export const getProduct: RequestHandler<{ productId: string }> = async (
+  req,
+  res,
+  _next
+) => {
+  try {
+    const productId = new ObjectId(req.params.productId);
+    const product = await Product.findById(productId);
+    if (product) {
+      return res.render('shop/product-detail', {
+        pageTitle: product.title,
+        path: '/products',
+        product,
+      });
+    }
+    return res.redirect('/');
+  } catch (err) {
+    console.log(err);
+  }
+};
 
 // export const getCart: RequestHandler = async (_req, res, _next) => {
 //   const cart = await Cart.getCart();

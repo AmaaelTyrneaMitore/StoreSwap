@@ -1,8 +1,15 @@
+import { ObjectId } from 'mongodb';
+
 import DatabaseHelper from '../utils/database.js';
 
 const db = await DatabaseHelper.getInstance().getDBConnection();
-const products = db.collection('products');
+const products = db.collection<Product>('products');
 
+/*
+  Returning promises for read/fetch query operations instead of awaiting them
+  and sending the data they fetched and only awaiting inside command operations
+  to ensure void is returned in order to enforce Command-Query Separation
+*/
 export default class Product {
   constructor(
     public title: string,
@@ -12,14 +19,18 @@ export default class Product {
   ) {}
 
   static async fetchAll() {
-    try {
-      return (await products.find().toArray()) as unknown[];
-    } catch (err) {
-      console.log(err);
-    }
+    return products.find().toArray();
+  }
+
+  static async findById(productId: ObjectId) {
+    return products.find({ _id: productId }).next();
   }
 
   async save() {
-    return products.insertOne(this);
+    try {
+      await products.insertOne(this);
+    } catch (err) {
+      console.log(err);
+    }
   }
 }
