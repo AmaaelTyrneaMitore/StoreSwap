@@ -2,11 +2,11 @@ import { Router } from 'express';
 
 import {
   getAddProduct,
-  getEditProduct,
-  getProducts,
+  // getEditProduct,
+  // getProducts,
   postAddProduct,
-  postDeleteProduct,
-  postEditProduct,
+  // postDeleteProduct,
+  // postEditProduct,
 } from '../controllers/admin.js';
 
 const router = Router();
@@ -19,12 +19,12 @@ router.route('/add-product').get(getAddProduct).post(postAddProduct);
 // requests
 
 // reference: https://stackoverflow.com/questions/1116019/when-submitting-a-get-form-the-query-string-is-removed-from-the-action-url
-router.route('/edit-product/:productId').post(getEditProduct);
+// router.route('/edit-product/:productId').post(getEditProduct);
 
-router.route('/edit-product').post(postEditProduct);
+// router.route('/edit-product').post(postEditProduct);
 
-router.route('/delete-product/').post(postDeleteProduct);
+// router.route('/delete-product/').post(postDeleteProduct);
 
-router.route('/products').get(getProducts);
+// router.route('/products').get(getProducts);
 
 export default router;

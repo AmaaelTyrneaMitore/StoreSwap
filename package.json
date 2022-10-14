@@ -46,6 +46,7 @@
   },
   "homepage": "https://github.com/AmaaelTyrneaMitore/StoreSwap#readme",
   "dependencies": {
+    "app-root-path": "^3.1.0",
     "ejs": "^3.1.8",
     "express": "^4.18.1",
     "mongodb": "^4.10.0"
