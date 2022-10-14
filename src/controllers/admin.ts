@@ -1,6 +1,6 @@
 import { RequestHandler } from 'express';
 
-import Product from '../models/product';
+import Product from '../models/product.js';
 
 export const getAddProduct: RequestHandler = (_req, res, _next) => {
   res.render('admin/edit-product', {

@@ -8,7 +8,7 @@ import {
   getProduct,
   postCart,
   postCartDelete,
-} from '../controllers/shop';
+} from '../controllers/shop.js';
 
 const router = Router();
 
