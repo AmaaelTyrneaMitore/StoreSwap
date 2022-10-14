@@ -3,9 +3,9 @@ import { join } from 'path';
 import appRootPath from 'app-root-path';
 
 import adminRoutes from './routes/admin.js';
-// import shopRoutes from './routes/shop.js';
+import shopRoutes from './routes/shop.js';
 
-// import { get404 } from './controllers/errors.js';
+import { get404 } from './controllers/errors.js';
 
 import { printNetworkIfaceNames } from './utils/net.js';
 import DatabaseHelper from './utils/database.js';
@@ -23,10 +23,10 @@ app.use(express.static(join(rootDir, 'public')));
 
 // route handling middlewares
 app.use('/admin', adminRoutes);
-// app.use(shopRoutes);
+app.use(shopRoutes);
 
 // 404 route handling middleware
-// app.use(get404);
+app.use(get404);
 
 // establish connection to the DB so that I can use it
 // throughout the application

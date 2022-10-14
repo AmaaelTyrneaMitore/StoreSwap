@@ -11,6 +11,14 @@ export default class Product {
     public imageURL = 'http://test.com/img'
   ) {}
 
+  static async fetchAll() {
+    try {
+      return (await products.find().toArray()) as unknown[];
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   async save() {
     return products.insertOne(this);
   }
