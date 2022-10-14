@@ -5,12 +5,16 @@ import Product from '../models/product.js';
 // import Cart from '../models/cart.js';
 
 export const getProducts: RequestHandler = async (_req, res, _next) => {
-  const products = await Product.fetchAll();
-  res.render('shop/product-list', {
-    pageTitle: 'StoreSwap ― A shop for all your needs',
-    path: '/',
-    products,
-  });
+  try {
+    const products = await Product.fetchAll();
+    res.render('shop/product-list', {
+      pageTitle: 'StoreSwap ― A shop for all your needs',
+      path: '/',
+      products,
+    });
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 export const getProduct: RequestHandler<{ productId: string }> = async (

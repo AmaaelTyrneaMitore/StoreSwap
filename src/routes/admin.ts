@@ -3,7 +3,7 @@ import { Router } from 'express';
 import {
   getAddProduct,
   // getEditProduct,
-  // getProducts,
+  getProducts,
   postAddProduct,
   // postDeleteProduct,
   // postEditProduct,
@@ -25,6 +25,6 @@ router.route('/add-product').get(getAddProduct).post(postAddProduct);
 
 // router.route('/delete-product/').post(postDeleteProduct);
 
-// router.route('/products').get(getProducts);
+router.route('/products').get(getProducts);
 
 export default router;
