@@ -2,7 +2,7 @@ import { Router } from 'express';
 
 import {
   getAddProduct,
-  // getEditProduct,
+  getEditProduct,
   getProducts,
   postAddProduct,
   // postDeleteProduct,
@@ -19,7 +19,7 @@ router.route('/add-product').get(getAddProduct).post(postAddProduct);
 // requests
 
 // reference: https://stackoverflow.com/questions/1116019/when-submitting-a-get-form-the-query-string-is-removed-from-the-action-url
-// router.route('/edit-product/:productId').post(getEditProduct);
+router.route('/edit-product/:productId').post(getEditProduct);
 
 // router.route('/edit-product').post(postEditProduct);
 

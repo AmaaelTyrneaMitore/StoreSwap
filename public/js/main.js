@@ -3,7 +3,13 @@ const fileInput = document.querySelector('.img-input');
 const imageContainer = document.querySelector('.img-container');
 const imageIcon = document.querySelector('.img-icon');
 const imageText = document.querySelector('.img-icon+p');
+const descriptionTextArea = document.querySelector(
+  'textarea[name="description"]'
+);
 let filename;
+
+window.onload = () =>
+  (descriptionTextArea.textContent = descriptionTextArea.textContent.trim());
 
 reader.onload = (event) => {
   imageContainer.style.backgroundImage = `linear-gradient(rgba(34, 34, 34, 0.6), rgba(34, 34, 34, 0.6)), url(${event.target.result})`;

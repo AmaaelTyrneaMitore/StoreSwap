@@ -1,4 +1,5 @@
 import { RequestHandler } from 'express';
+import { ObjectId } from 'mongodb';
 
 import Product from '../models/product.js';
 
@@ -24,32 +25,35 @@ export const postAddProduct: RequestHandler<
   }
 };
 
-// export const getEditProduct: RequestHandler<
-//   { productId: string },
-//   unknown,
-//   unknown,
-//   { [key: string]: string | unknown }
-// > = async (req, res, _next) => {
-//   if (req.query.edit !== 'true' && req.query.edit !== 'false') {
-//     return res.redirect('/');
-//   }
+export const getEditProduct: RequestHandler<
+  { productId: string },
+  unknown,
+  unknown,
+  { [key: string]: string | unknown }
+> = async (req, res, _next) => {
+  if (req.query.edit !== 'true' && req.query.edit !== 'false') {
+    return res.redirect('/');
+  }
+  const editMode = req.query.edit === 'true';
+  const { productId } = req.params;
 
-//   const editMode = req.query.edit === 'true';
+  try {
+    const product = await Product.findById(new ObjectId(productId));
 
-//   const { productId } = req.params;
-//   const product = await Product.find(productId);
+    if (!product) {
+      return res.redirect('/');
+    }
 
-//   if (!product) {
-//     return res.redirect('/');
-//   }
-
-//   res.render('admin/edit-product', {
-//     pageTitle: 'Edit Product - StoreSwap',
-//     path: '/admin/edit-product',
-//     editing: editMode,
-//     product,
-//   });
-// };
+    res.render('admin/edit-product', {
+      pageTitle: 'Edit Product - StoreSwap',
+      path: '/admin/edit-product',
+      editing: editMode,
+      product,
+    });
+  } catch (err) {
+    console.log(err);
+  }
+};
 
 // export const postEditProduct: RequestHandler<
 //   unknown,
