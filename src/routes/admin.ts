@@ -7,7 +7,7 @@ import {
   postAddProduct,
   postDeleteProduct,
   postEditProduct,
-} from '../controllers/admin';
+} from '../controllers/admin.js';
 
 const router = Router();
 

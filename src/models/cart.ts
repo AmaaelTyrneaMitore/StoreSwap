@@ -1,8 +1,8 @@
 import { join } from 'path';
 import { readFile, writeFile } from 'fs/promises';
 
-import Product from './product';
-import rootDir from '../utils/path';
+import Product from './product.js';
+import rootDir from '../utils/path.js';
 
 const path = join(rootDir, 'data', 'cart.json');
 

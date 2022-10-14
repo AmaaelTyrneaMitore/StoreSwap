@@ -2,8 +2,8 @@ import { readFile, writeFile } from 'fs/promises';
 import { join } from 'path';
 import { randomUUID } from 'crypto';
 
-import Cart from './cart';
-import rootDir from '../utils/path';
+import Cart from './cart.js';
+import rootDir from '../utils/path.js';
 
 const getProductsFromFile = async (): Promise<[] | Product[]> => {
   const path = join(rootDir, 'data', 'products.json');

@@ -1,7 +1,7 @@
 import { RequestHandler } from 'express';
 
-import Product from '../models/product';
-import Cart from '../models/cart';
+import Product from '../models/product.js';
+import Cart from '../models/cart.js';
 
 export const getProducts: RequestHandler = async (_req, res, _next) => {
   const products = await Product.fetchAll();
