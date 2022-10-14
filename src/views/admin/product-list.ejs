@@ -1,60 +1,63 @@
 <%- include('../includes/head.ejs') %>
-<link rel="stylesheet" href="/css/error.css" />
-<link rel="stylesheet" href="/css/queries.css" />
+  <link rel="stylesheet" href="/css/error.css" />
+  <link rel="stylesheet" href="/css/queries.css" />
 
-</head>
-<body>
-  <img class="background" src="/images/background@2x.jpg" alt="" />
-  <!-- <div class="sphere1"></div>
+  </head>
+
+  <body>
+    <img class="background" src="/images/background@2x.jpg" alt="" />
+    <!-- <div class="sphere1"></div>
   <div class="sphere2"></div>
   <div class="sphere3"></div>
   <div class="sphere4"></div> -->
 
-  <%- include('../includes/navigation.ejs') %>
-    <main>
-      <div class="container">
-        <% if (products.length > 0) { %>
-        <!-- CARD GRID -->
-        <div class="products grid grid--2-cols">
-          <% for( let product of products ) { %>
-          <!-- CARD -->
-          <div class="product card">
-            <img
-              src="/images/test-product.jpg"
-              alt="<%= product.title %>"
-              class="product-img"
-            />
+    <%- include('../includes/navigation.ejs') %>
+      <main>
+        <div class="container">
+          <% if (products.length> 0) { %>
+            <!-- CARD GRID -->
+            <div class="products grid grid--2-cols">
+              <% for( let product of products ) { %>
+                <!-- CARD -->
+                <div class="product card">
+                  <img src="/images/test-product.jpg" alt="<%= product.title %>" class="product-img" />
 
-            <div class="product-details">
-              <p class="product-title"><%= product.title %></p>
-              <p class="product-description"><%= product.description.length > 100 ? product.description.slice(0, 99).trim() + '...' : product.description %></p>
-              <p class="product-price">$<%= product.price %></p>
+                  <div class="product-details">
+                    <p class="product-title">
+                      <%= product.title %>
+                    </p>
+                    <p class="product-description">
+                      <%= product.description.length> 100 ? product.description.slice(0, 99).trim() + '...' :
+                        product.description %>
+                    </p>
+                    <p class="product-price">$<%= product.price %>
+                    </p>
+                  </div>
+
+                  <div class="card-actions">
+                    <form action="/admin/edit-product/<%= product._id %>?edit=true" method="post">
+                      <button class="add-to-cart">Edit Product</button>
+                    </form>
+
+                    <form action="/admin/delete-product" method="post">
+                      <button class="details">Delete</button>
+                      <input type="hidden" name="id" value="<%= product._id %>">
+                    </form>
+                  </div>
+                </div>
+                <% } %>
             </div>
-
-            <div class="card-actions">
-              <form action="/admin/edit-product/<%= product.id %>?edit=true" method="post">
-                <button class="add-to-cart">Edit Product</button>
-              </form>
-
-              <form action="/admin/delete-product" method="post">
-                <button class="details">Delete</button>
-                <input type="hidden" name="id" value="<%= product.id %>">
-              </form>
-            </div>
-          </div>
-          <% } %>
-        </div>
-        <% } else { %>
-          <div class="error-card card card--linear margin-bottom-sm">
-          <h1 class="error-code">Boo<i class="fa-solid fa-ghost"></i>!</h1>
-          <p class="error-title">No Products Found!</p>
-          <p class="error-subtitle margin-bottom-sm">
-            But you can create new ones!
-          </p>
-          <p class="error-message">[🛍️ Products took a sabbatical 🛒]</p>
-        </div>
-        <% } %> 
+            <% } else { %>
+              <div class="error-card card card--linear margin-bottom-sm">
+                <h1 class="error-code">Boo<i class="fa-solid fa-ghost"></i>!</h1>
+                <p class="error-title">No Products Found!</p>
+                <p class="error-subtitle margin-bottom-sm">
+                  But you can create new ones!
+                </p>
+                <p class="error-message">[🛍️ Products took a sabbatical 🛒]</p>
+              </div>
+              <% } %>
 
 
 
-<%- include('../includes/end.ejs') %>
+                <%- include('../includes/end.ejs') %>

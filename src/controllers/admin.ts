@@ -78,11 +78,15 @@ export const postAddProduct: RequestHandler<
 //   res.redirect('/admin/products');
 // };
 
-// export const getProducts: RequestHandler = async (_req, res, _next) => {
-//   const products = await Product.fetchAll();
-//   res.render('admin/product-list', {
-//     pageTitle: 'Manage Products',
-//     path: '/admin/products',
-//     products,
-//   });
-// };
+export const getProducts: RequestHandler = async (_req, res, _next) => {
+  try {
+    const products = await Product.fetchAll();
+    res.render('admin/product-list', {
+      pageTitle: 'Manage Products',
+      path: '/admin/products',
+      products,
+    });
+  } catch (err) {
+    console.log(err);
+  }
+};
