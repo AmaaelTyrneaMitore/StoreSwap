@@ -41,7 +41,7 @@ app.use(async (req, _res, next) => {
     // fetching a test user that I created behind the scenes
     // since I don't have any authentication flow yet
     const user = (await User.findById(
-      new ObjectId('634a3f5157037b816571f173')
+      new ObjectId('634a438d006e4dc30ed9126f')
     )) as User;
     req.user = user;
     next();
