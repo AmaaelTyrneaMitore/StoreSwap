@@ -27,6 +27,14 @@ export default class Product {
     return products.find({ _id: productId }).next();
   }
 
+  static async destroy(productId: ObjectId) {
+    try {
+      await products.deleteOne({ _id: productId });
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   async save() {
     /* 
      I'm destructuring the object like this because if I do have an _id
