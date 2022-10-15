@@ -15,6 +15,7 @@ export default class Product {
     public title: string,
     public description: string,
     public price: number,
+    public _userId: ObjectId,
     public _id?: ObjectId,
     public imageURL = 'http://test.com/img'
   ) {}

@@ -17,7 +17,7 @@ export const postAddProduct: RequestHandler<
   Omit<Product, 'id' | 'save'>
 > = (req, res, _next) => {
   const { title, price, description } = req.body;
-  new Product(title, description, Number(price)).save();
+  new Product(title, description, Number(price), req.user._id!).save();
   res.redirect('/');
 };
 
@@ -69,6 +69,7 @@ export const postEditProduct: RequestHandler<
     updatedTitle,
     updatedDescription,
     updatedPrice,
+    req.user._id!,
     new ObjectId(productId)
   ).save();
   res.redirect('/admin/products');
