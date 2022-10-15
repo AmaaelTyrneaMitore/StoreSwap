@@ -82,15 +82,15 @@ export const postEditProduct: RequestHandler<
   }
 };
 
-// export const postDeleteProduct: RequestHandler<
-//   unknown,
-//   unknown,
-//   { id: string }
-// > = async (req, res, _next) => {
-//   const { id: productId } = req.body;
-//   await Product.delete(productId);
-//   res.redirect('/admin/products');
-// };
+export const postDeleteProduct: RequestHandler<
+  unknown,
+  unknown,
+  { id: string }
+> = async (req, res, _next) => {
+  const { id: productId } = req.body;
+  await Product.destroy(new ObjectId(productId));
+  res.redirect('/admin/products');
+};
 
 export const getProducts: RequestHandler = async (_req, res, _next) => {
   try {
