@@ -15,14 +15,10 @@ export const postAddProduct: RequestHandler<
   unknown,
   unknown,
   Omit<Product, 'id' | 'save'>
-> = async (req, res, _next) => {
+> = (req, res, _next) => {
   const { title, price, description } = req.body;
-  try {
-    await new Product(title, description, Number(price)).save();
-    res.redirect('/');
-  } catch (err) {
-    console.log(err);
-  }
+  new Product(title, description, Number(price)).save();
+  res.redirect('/');
 };
 
 export const getEditProduct: RequestHandler<
@@ -59,8 +55,8 @@ export const postEditProduct: RequestHandler<
   unknown,
   unknown,
   Omit<Product, 'save'>
-> = async (req, res, _next) => {
-  // fetch information for the product
+> = (req, res, _next) => {
+  // extract product information from request body
   const {
     _id: productId,
     title: updatedTitle,
@@ -68,27 +64,23 @@ export const postEditProduct: RequestHandler<
     description: updatedDescription,
   } = req.body;
 
-  try {
-    // create a new product instance and populate it with that info and then call save on it
-    new Product(
-      updatedTitle,
-      updatedDescription,
-      updatedPrice,
-      new ObjectId(productId)
-    ).save();
-    res.redirect('/admin/products');
-  } catch (err) {
-    console.log(err);
-  }
+  // create a new product instance and populate it with that info and then call save on it
+  new Product(
+    updatedTitle,
+    updatedDescription,
+    updatedPrice,
+    new ObjectId(productId)
+  ).save();
+  res.redirect('/admin/products');
 };
 
 export const postDeleteProduct: RequestHandler<
   unknown,
   unknown,
   { id: string }
-> = async (req, res, _next) => {
+> = (req, res, _next) => {
   const { id: productId } = req.body;
-  await Product.destroy(new ObjectId(productId));
+  Product.destroy(new ObjectId(productId));
   res.redirect('/admin/products');
 };
 
