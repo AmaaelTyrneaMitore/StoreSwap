@@ -55,22 +55,32 @@ export const getEditProduct: RequestHandler<
   }
 };
 
-// export const postEditProduct: RequestHandler<
-//   unknown,
-//   unknown,
-//   Omit<Product, 'save'>
-// > = async (req, res, _next) => {
-//   // fetch information for the product
-//   const {
-//     id: productId,
-//     title: updatedTitle,
-//     price: updatedPrice,
-//     description: updatedDescription,
-//   } = req.body;
-//   // create a new product instance and populate it with that info and then call save on it
-//   new Product(updatedTitle, updatedDescription, updatedPrice, productId).save();
-//   res.redirect('/admin/products');
-// };
+export const postEditProduct: RequestHandler<
+  unknown,
+  unknown,
+  Omit<Product, 'save'>
+> = async (req, res, _next) => {
+  // fetch information for the product
+  const {
+    _id: productId,
+    title: updatedTitle,
+    price: updatedPrice,
+    description: updatedDescription,
+  } = req.body;
+
+  try {
+    // create a new product instance and populate it with that info and then call save on it
+    new Product(
+      updatedTitle,
+      updatedDescription,
+      updatedPrice,
+      productId
+    ).save();
+    res.redirect('/admin/products');
+  } catch (err) {
+    console.log(err);
+  }
+};
 
 // export const postDeleteProduct: RequestHandler<
 //   unknown,

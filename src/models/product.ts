@@ -15,6 +15,7 @@ export default class Product {
     public title: string,
     public description: string,
     public price: number,
+    public _id?: ObjectId,
     public imageURL = 'http://test.com/img'
   ) {}
 
@@ -27,8 +28,27 @@ export default class Product {
   }
 
   async save() {
+    /* 
+     I'm destructuring the object like this because if I do have an _id
+     it will trigger the logic to update an product and there if I pass
+     "this" to $set, it will also try to update _id property which is immutable
+     and therefore to overcome this problem, I storing the _id and other product
+     details in two separate constants insted of using a blacklist or a whitelist
+     approach
+    */
+    const { _id, ...productDetails } = this;
+
     try {
-      await products.insertOne(this);
+      if (_id) {
+        // update the product
+        await products.updateOne(
+          { _id: new ObjectId(_id) },
+          { $set: productDetails }
+        );
+      } else {
+        // insert a new product
+        await products.insertOne(this);
+      }
     } catch (err) {
       console.log(err);
     }
