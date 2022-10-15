@@ -74,7 +74,7 @@ export const postEditProduct: RequestHandler<
       updatedTitle,
       updatedDescription,
       updatedPrice,
-      productId
+      new ObjectId(productId)
     ).save();
     res.redirect('/admin/products');
   } catch (err) {

@@ -41,10 +41,7 @@ export default class Product {
     try {
       if (_id) {
         // update the product
-        await products.updateOne(
-          { _id: new ObjectId(_id) },
-          { $set: productDetails }
-        );
+        await products.updateOne({ _id: _id }, { $set: productDetails });
       } else {
         // insert a new product
         await products.insertOne(this);
