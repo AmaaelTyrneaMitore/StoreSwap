@@ -60,16 +60,15 @@ export const postCart: RequestHandler<
   res.redirect('/cart');
 };
 
-// export const postCartDelete: RequestHandler<
-//   unknown,
-//   unknown,
-//   { id: string }
-// > = async (req, res, _next) => {
-//   const { id: productId } = req.body;
-//   const product = await Product.find(productId);
-//   if (product) await Cart.deleteProduct(productId, product.price);
-//   res.redirect('/cart');
-// };
+export const postCartDeleteProduct: RequestHandler<
+  unknown,
+  unknown,
+  { id: string }
+> = async (req, res, _next) => {
+  const { id: productId } = req.body;
+  req.user.deleteItemFromCart(new ObjectId(productId));
+  res.redirect('/cart');
+};
 
 // export const getCheckout: RequestHandler = (_req, res, _next) => {
 //   res.render('shop/checkout', {
