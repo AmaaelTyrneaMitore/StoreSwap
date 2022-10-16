@@ -2,7 +2,6 @@ import { RequestHandler } from 'express';
 import { ObjectId } from 'mongodb';
 
 import Product from '../models/product.js';
-// import Cart from '../models/cart.js';
 
 export const getProducts: RequestHandler = async (_req, res, _next) => {
   try {
@@ -40,7 +39,6 @@ export const getProduct: RequestHandler<{ productId: string }> = async (
 
 export const getCart: RequestHandler = async (req, res, _next) => {
   const products = await req.user.getCart();
-
   res.render('shop/cart', {
     path: '/cart',
     pageTitle: 'My Cart',
