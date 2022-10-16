@@ -17,7 +17,7 @@ export default class User {
     public _id?: ObjectId
   ) {}
 
-  static async findById(userId: ObjectId) {
+  static findById(userId: ObjectId) {
     return users.find({ _id: userId }).next();
   }
 

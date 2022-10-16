@@ -20,11 +20,11 @@ export default class Product {
     public imageURL = 'http://test.com/img'
   ) {}
 
-  static async fetchAll() {
+  static fetchAll() {
     return products.find().toArray();
   }
 
-  static async findById(productId: ObjectId) {
+  static findById(productId: ObjectId) {
     return products.find({ _id: productId }).next();
   }
 
