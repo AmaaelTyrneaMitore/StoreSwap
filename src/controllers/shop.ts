@@ -66,18 +66,19 @@ export const getProduct: RequestHandler<{ productId: string }> = async (
 //   });
 // };
 
-// export const postCart: RequestHandler<
-//   unknown,
-//   unknown,
-//   { id: string }
-// > = async (req, res, _next) => {
-//   const { id: productId } = req.body;
-//   const product = await Product.find(productId as string);
-//   if (product) {
-//     Cart.addProduct(productId as string, product.price);
-//   }
-//   res.redirect('/cart');
-// };
+export const postCart: RequestHandler<
+  unknown,
+  unknown,
+  { _id: string }
+> = async (req, res, _next) => {
+  const { _id } = req.body;
+  // fetch the product that I want to add
+  const product = await Product.findById(new ObjectId(_id));
+  if (product) {
+    req.user.addToCart(product);
+  }
+  res.redirect('/cart');
+};
 
 // export const postCartDelete: RequestHandler<
 //   unknown,
