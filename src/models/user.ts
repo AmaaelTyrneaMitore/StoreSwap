@@ -90,6 +90,20 @@ export default class User {
     }
   }
 
+  async deleteItemFromCart(productId: ObjectId) {
+    const updatedCartItems = this.cart.items.filter(
+      (cartItem) => cartItem._productId.toString() !== productId.toString()
+    );
+    try {
+      await users.updateOne(
+        { _id: this._id },
+        { $set: { cart: { items: updatedCartItems } } }
+      );
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   /*
     Because getCart only exists on a user that has a cart property, this is the MongoDB
     way of thinking about relations, we don't need to reach out to a Cart collection

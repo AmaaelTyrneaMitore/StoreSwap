@@ -7,7 +7,7 @@ import {
   // getOrders,
   getProduct,
   postCart,
-  // postCartDelete,
+  postCartDeleteProduct,
 } from '../controllers/shop.js';
 
 const router = Router();
@@ -18,7 +18,7 @@ router.route('/products/:productId').get(getProduct);
 
 router.route('/cart').get(getCart).post(postCart);
 
-// router.route('/cart-delete-item').post(postCartDelete);
+router.route('/cart-delete-item').post(postCartDeleteProduct);
 
 // router.route('/checkout').get(getCheckout);
 
