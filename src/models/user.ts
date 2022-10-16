@@ -7,6 +7,7 @@ import Cart from './cart.js';
 
 const db = await DatabaseHelper.getInstance().getDBConnection();
 const users = db.collection<User>('users');
+const products = db.collection<Product>('products');
 
 export default class User {
   constructor(
@@ -87,5 +88,31 @@ export default class User {
     } catch (err) {
       console.log(err);
     }
+  }
+
+  /*
+    Because getCart only exists on a user that has a cart property, this is the MongoDB
+    way of thinking about relations, we don't need to reach out to a Cart collection
+    because there is no such collection. Instead here, I can simply return the entire cart,
+    but not just a cart with references to the product, but instead, a fully populated cart
+    with all the product details
+  */
+
+  async getCart() {
+    // construct an array that holds only the product id of all the items in the cart
+    const productIds = this.cart.items.map((cartItem) => cartItem._productId);
+    // fetch all the elements where the id is one of the ids mentioned in the productIds
+    const cartProducts = await products
+      .find({ _id: { $in: productIds } })
+      .toArray();
+
+    // add quantity back to every product and set it to the quantity that is stored
+    // in the cart of this user
+    return cartProducts.map((product) => ({
+      ...product,
+      quantity: this.cart.items.find(
+        (cartItem) => cartItem._productId.toString() === product._id.toString()
+      )!.quantity,
+    }));
   }
 }
