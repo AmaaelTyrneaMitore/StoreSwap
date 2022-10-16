@@ -15,7 +15,7 @@ import DatabaseHelper from './utils/database.js';
 
 /*
   Using module augmentation for patching the Request object
-  and adding an user field to it which of type User
+  and adding an user field to it which is of type User
 */
 declare module 'express-serve-static-core' {
   interface Request {
@@ -40,10 +40,11 @@ app.use(async (req, _res, next) => {
   try {
     // fetching a test user that I created behind the scenes
     // since I don't have any authentication flow yet
-    const user = (await User.findById(
+    const { username, email, cart, _id } = (await User.findById(
       new ObjectId('634a438d006e4dc30ed9126f')
     )) as User;
-    req.user = user;
+    // storing the User object instead of storing a plain JS object
+    req.user = new User(username, email, cart, _id);
     next();
   } catch (err) {
     console.log(err);
