@@ -4,10 +4,12 @@ import DatabaseHelper from '../utils/database.js';
 
 import Product from './product.js';
 import Cart from './cart.js';
+import Order from './order.js';
 
 const db = await DatabaseHelper.getInstance().getDBConnection();
 const users = db.collection<User>('users');
 const products = db.collection<Product>('products');
+const orders = db.collection<Order>('orders');
 
 export default class User {
   constructor(
@@ -128,5 +130,42 @@ export default class User {
         (cartItem) => cartItem._productId.toString() === product._id.toString()
       )!.quantity,
     }));
+  }
+
+  /*
+    Again, I am going to store orders on users, and therefore, this method won't
+    take any arguments because the cart which will be passed as the data for an order
+    is already registered on this User model, so all I need to do here is I need to add
+    orders to my user. And because, unlike cart items, order histores get pretty long and 
+    therefore I am going to create a new orders collection to store my orders, but I'll still
+    create addOrders as a method on my user though.
+
+    Also, I want to store user data along with the product id and quantity
+  */
+  async addOrder() {
+    try {
+      // calling this.getCart as it's going to return products with enriched information
+      // so cartItems is going to be an array of cart items with product data and their
+      // quantity
+      const cartItems = await this.getCart();
+      const order = {
+        items: cartItems,
+        user: {
+          _id: new ObjectId(this._id),
+          username: this.username,
+        },
+        createdAt: Date.now(),
+      };
+      // insert the order that we created using cartItems and user data into orders collection
+      await orders.insertOne(order);
+      // and then set the cart.items to an empty array, both here and in the DB
+      this.cart.items = [];
+      await users.updateOne(
+        { _id: this._id },
+        { $set: { cart: { items: [] } } }
+      );
+    } catch (err) {
+      console.log(err);
+    }
   }
 }

@@ -70,16 +70,21 @@ export const postCartDeleteProduct: RequestHandler<
   res.redirect('/cart');
 };
 
-// export const getCheckout: RequestHandler = (_req, res, _next) => {
-//   res.render('shop/checkout', {
-//     path: '/checkout',
-//     pageTitle: 'Checkout',
-//   });
-// };
+export const getCheckout: RequestHandler = (_req, res, _next) => {
+  res.render('shop/checkout', {
+    path: '/checkout',
+    pageTitle: 'Checkout',
+  });
+};
 
-// export const getOrders: RequestHandler = (_req, res, _next) => {
-//   res.render('shop/orders', {
-//     path: '/orders',
-//     pageTitle: 'My Orders',
-//   });
-// };
+export const getOrders: RequestHandler = (_req, res, _next) => {
+  res.render('shop/orders', {
+    path: '/orders',
+    pageTitle: 'My Orders',
+  });
+};
+
+export const postOrder: RequestHandler = (req, res, _next) => {
+  req.user.addOrder();
+  res.redirect('/orders');
+};

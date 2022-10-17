@@ -1,32 +1,31 @@
 <%- include('../includes/head.ejs') %>
-<link rel="stylesheet" href="/css/forms.css">
-<link rel="stylesheet" href="/css/error.css" />
-<link rel="stylesheet" href="/css/queries.css" />
+  <link rel="stylesheet" href="/css/forms.css">
+  <link rel="stylesheet" href="/css/error.css" />
+  <link rel="stylesheet" href="/css/queries.css" />
 
-</head>
-<body>
-  <img class="background" src="/images/background@2x.jpg" alt="" />
+  </head>
 
-  <%- include('../includes/navigation.ejs') %>
-    <main>
-      <ul>
-        <li>
-          <div class="container cart-products-list margin-bottom-md">
-            <!-- CARD GRID -->
-            <div
-              class="checkout-products cart-products-container card card--linear margin-bottom-md"
-            >
-              <p class="product-title">Lorem ipsum dolor</p>
-              <p class="product-price"><span>Quantity: </span>1</p>
+  <body>
+    <img class="background" src="/images/background@2x.jpg" alt="" />
+
+    <%- include('../includes/navigation.ejs') %>
+      <main>
+        <ul>
+          <li>
+            <div class="container cart-products-list margin-bottom-md">
+              <!-- CARD GRID -->
+              <div class="checkout-products cart-products-container card card--linear margin-bottom-md">
+                <p class="product-title">Lorem ipsum dolor</p>
+                <p class="product-price"><span>Quantity: </span>1</p>
+              </div>
             </div>
-          </div>
-        </li>
-      </ul>
+          </li>
+        </ul>
 
-      <div class="checkout margin-bottom-sm">
-        <p class="product-price"><span>Total: $</span>1433.44</p>
-        <form action="/checkout" method="get">
-          <button class="submit-btn">Checkout</button>
-        </form>
-        
-<%- include('../includes/end.ejs') %>
+        <div class="checkout margin-bottom-sm">
+          <p class="product-price"><span>Total: $</span>1433.44</p>
+          <form action="/create-order" method="post">
+            <button class="submit-btn">Checkout</button>
+          </form>
+
+          <%- include('../includes/end.ejs') %>
