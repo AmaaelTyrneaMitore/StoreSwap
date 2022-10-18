@@ -77,11 +77,17 @@ export const getCheckout: RequestHandler = (_req, res, _next) => {
   });
 };
 
-export const getOrders: RequestHandler = (_req, res, _next) => {
-  res.render('shop/orders', {
-    path: '/orders',
-    pageTitle: 'My Orders',
-  });
+export const getOrders: RequestHandler = async (req, res, _next) => {
+  try {
+    const orders = await req.user.getOrders();
+    res.render('shop/orders', {
+      path: '/orders',
+      pageTitle: 'My Orders',
+      orders,
+    });
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 export const postOrder: RequestHandler = (req, res, _next) => {

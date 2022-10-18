@@ -30,5 +30,5 @@ interface item extends Product {
 export default class Order {
   public items!: item[];
   public user!: { _id: ObjectId; username: string };
-  public createdAt!: number;
+  public createdAt!: string;
 }

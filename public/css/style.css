@@ -526,6 +526,7 @@
 
 .orders-product-container {
   text-align: left;
+  list-style: none;
   padding: 4.8rem;
 }
 

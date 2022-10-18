@@ -1,36 +1,57 @@
 <%- include('../includes/head.ejs') %>
-<link rel="stylesheet" href="/css/forms.css">
-<link rel="stylesheet" href="/css/error.css" />
-<link rel="stylesheet" href="/css/queries.css" />
+  <link rel="stylesheet" href="/css/forms.css">
+  <link rel="stylesheet" href="/css/error.css" />
+  <link rel="stylesheet" href="/css/queries.css" />
 
-</head>
-<body>
-  <img class="background" src="/images/background@2x.jpg" alt="" />
+  </head>
 
-  <%- include('../includes/navigation.ejs') %>
-    <main>
-      <div class="container cart-products-list orders-list margin-bottom-md">
-        <!-- CARD GRID -->
-        <div
-          class="orders-product-container card card--linear margin-bottom-md"
-        >
-          <div class="orders-product-header">
-            <p class="product-title">Order - # 633b0742e093f6ee81d37622</p>
-            <form action="/checkout" method="get">
-              <button class="submit-btn">Get Invoice</button>
-            </form>
-          </div>
+  <body>
+    <img class="background" src="/images/background@2x.jpg" alt="" />
 
-          <ul class="orders-product-list">
-            <li><p class="product-price">Lorem Ipsum (3)</p></li>
-            <li><p class="product-price">Lorem Ipsum Dolor (7)</p></li>
-            <li><p class="product-price">Lorem Lorem Dipsum (4)</p></li>
-          </ul>
+    <%- include('../includes/navigation.ejs') %>
+      <main>
+        <% if (orders.length> 0) {%>
+          <div>
+            <ul class="container cart-products-list orders-list margin-bottom-md">
+              <% orders.forEach(({_id, items, createdAt})=> { %>
+                <!-- CARD GRID -->
+                <li class="orders-product-container card card--linear margin-bottom-md">
+                  <div class="orders-product-header">
+                    <p class="product-title">Order - # <%= _id %>
+                    </p>
+                    <form action="/checkout" method="get">
+                      <button class="submit-btn">Get Invoice</button>
+                    </form>
+                  </div>
 
-          <p class="product-description">Date: 32/33/2332</p>
-          <form action="/checkout" method="get">
-            <button class="submit-btn btn-hidden">Get Invoice</button>
-          </form>
-        </div>
-        
-<%- include('../includes/end.ejs') %>
+                  <ul class="orders-product-list">
+                    <% items.forEach(({title, quantity})=> {%>
+                      <li>
+                        <p class="product-price">
+                          <%= title %> (<%= quantity %>)
+                        </p>
+                      </li>
+                      <% })%>
+                  </ul>
+
+                  <p class="product-description">
+                    <%= createdAt %>
+                  </p>
+                  <form action="/checkout" method="get">
+                    <button class="submit-btn btn-hidden">Get Invoice</button>
+                  </form>
+                </li>
+                <%})%>
+            </ul>
+            <% } else { %>
+              <div class="container">
+                <div class="error-card card card--linear margin-bottom-sm">
+                  <h1 class="error-code">EM-T<i class="fa-sharp fa-solid fa-face-grin-beam-sweat"></i></h1>
+                  <p class="error-title">Nope! Nothing Here!</p>
+                  <p class="error-subtitle margin-bottom-sm">
+                    You haven't order anything yet🥹
+                  </p>
+                </div>
+                <% } %>
+
+                  <%- include('../includes/end.ejs') %>
