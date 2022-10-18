@@ -154,7 +154,7 @@ export default class User {
           _id: new ObjectId(this._id),
           username: this.username,
         },
-        createdAt: Date.now(),
+        createdAt: new Date(Date.now()).toString().slice(0, 21),
       };
       // insert the order that we created using cartItems and user data into orders collection
       await orders.insertOne(order);
@@ -167,5 +167,10 @@ export default class User {
     } catch (err) {
       console.log(err);
     }
+  }
+
+  getOrders() {
+    // find all orders for that user
+    return orders.find({ 'user._id': this._id }).toArray();
   }
 }
